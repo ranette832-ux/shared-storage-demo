@@ -22,6 +22,11 @@ const AD_URLS = [
   { url: `https://${contentProducerUrl}/ads/nav-ad-2.html` },
   { url: `https://${contentProducerUrl}/ads/nav-ad-3.html` },
 ];
+const OTHER_URLS = [
+  { url: `https://${contentProducerUrl}/ads/nav-ad-1.html` },
+  { url: `https://${contentProducerUrl}/ads/nav-ad-2.html` },
+  { url: `https://${contentProducerUrl}/ads/nav-ad-3.html` },
+];
 
 async function injectAd() {
   // Load the worklet module
@@ -33,6 +38,8 @@ async function injectAd() {
   // Run the URL selection operation to select an ad based on the experiment group in shared storage
   const selectedUrl = await window.sharedStorage.selectURL('top-level-nav', AD_URLS, {
     resolveToConfig,
+    keepAlive: true,
+    savedQuery: 'creative_test_or_control'
   });
 
   const adSlot = document.getElementById('ad-slot');
@@ -41,6 +48,20 @@ async function injectAd() {
     adSlot.config = selectedUrl;
   } else {
     adSlot.src = selectedUrl;
+  }
+
+  //----------------
+  const selectedUrlTwo = await window.sharedStorage.selectURL('top-level-nav-two', AD_URLS, {
+    resolveToConfig,
+    savedQuery: 'creative_test_or_control'
+  });
+
+  const adSlotTwo = document.getElementById('ad-slot-two');
+
+  if (resolveToConfig && selectedUrlTwo instanceof FencedFrameConfig) {
+    adSlotTwo.config = selectedUrlTwo;
+  } else {
+    adSlotTwo.src = selectedUrlTwo;
   }
 }
 

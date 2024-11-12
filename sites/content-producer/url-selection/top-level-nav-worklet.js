@@ -17,8 +17,17 @@
 // This code is loaded as a Shared Storage worklet
 class SelectURLOperation {
   async run() {
+    console.log('first operation run');
     return 0;
   }
 }
 
+class SelectURLOperationTwo {
+  async run() {
+    console.log('second operation run');
+    return 1;
+  }
+}
+
 register('top-level-nav', SelectURLOperation);
+register('top-level-nav-two', SelectURLOperationTwo);
