@@ -12,23 +12,23 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
-.decoder__input {
+ */chrome://inspect/#shared-storage-worklets
+.decoder__input { /.well-known/private-aggregation/report-shared-storage y /.well-known/private-aggregation/debug/report-shared-storage
   width: 100%;
-}
+}try
 
 .decoder__run {
   margin-top: var(--size-4);
-}
+}catch
 
 .decoder__output-container {
   margin-top: var(--size-4);
-}
+}try 
 
 .decoder__output-table th {
   padding: var(--size-2);
   /* width: 40%; */
-}
+}catch 
 
 .decoder__output-table td {
     text-align: center;
@@ -36,3 +36,4 @@
     overflow-wrap: anywhere;
     padding: 0 20px;
 }
+debug_cleartext_payload
